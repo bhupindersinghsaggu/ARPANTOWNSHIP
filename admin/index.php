@@ -124,7 +124,7 @@ function admin_page_url(int $p, string $search, string $statusFilter): string
 <div id="topProgressBar"></div>
 
 <div class="admin-topbar">
-    <div class="brand">Arpan Township — Admin</div>
+    <div class="brand"><img src="../images/logo.png" alt=""> Arpan Township — Admin</div>
     <button type="button" class="admin-hamburger" id="adminHamburger" aria-label="Menu">
         <span></span><span></span><span></span>
     </button>
@@ -159,7 +159,7 @@ function admin_page_url(int $p, string $search, string $statusFilter): string
             <div class="admin-alert error"><?php echo htmlspecialchars($actionMessage); ?></div>
         <?php endif; ?>
 
-        <div style="overflow-x:auto;">
+        <div class="admin-table-wrap" style="overflow-x:auto;">
         <table class="admin-table">
             <thead>
                 <tr>
