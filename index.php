@@ -146,7 +146,7 @@ Near Ambala Road, Saharanpur-247001</span>
                 </div>
             </div>
         </section> -->
-        <section class="bg-dark section-dark text-light">
+        <section class="bg-white text-dark">
             <div class="container">
                 <div class="row g-4 justify-content-between">
                     <div class="col-lg-4 relative z-3">
@@ -161,7 +161,7 @@ Near Ambala Road, Saharanpur-247001</span>
                         <div class="spacer-single spacer-double"></div>
                         <div class="row">
                             <div class="col-md-12 wow fadeInUp" data-wow-delay=".2s">
-                                <ul class="amenity-list fs-500 text-light">
+                                <ul class="amenity-list fs-500">
                                     <li><span class="amenity-check"><svg width="15" height="15" viewBox="0 0 24 24"
                                                 fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M12 3L8 9h2l-3 5h3v5h4v-5h3l-3-5h2L12 3z" stroke-width="1.5"
