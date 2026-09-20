@@ -266,6 +266,119 @@
             }
         }
 
+        /* Desktop-only floating WhatsApp button */
+        .desktop-whatsapp-btn {
+            position: fixed;
+            right: 28px;
+            bottom: 28px;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: #25D366;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+            z-index: 10001;
+            border: none;
+            cursor: pointer;
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+
+        .desktop-whatsapp-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 767px) {
+            .desktop-whatsapp-btn {
+                display: none;
+            }
+        }
+
+        .wa-lead-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(16, 60, 59, 0.55);
+            z-index: 20000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .wa-lead-overlay.wa-lead-open {
+            display: flex;
+        }
+
+        .wa-lead-box {
+            background: #fff;
+            max-width: 380px;
+            width: 100%;
+            border-radius: 10px;
+            padding: 32px 28px 26px;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .wa-lead-box h4 {
+            margin: 0 0 4px;
+            color: #103c3b;
+        }
+
+        .wa-lead-box p.wa-lead-sub {
+            margin: 0 0 18px;
+            font-size: 13px;
+            color: #7a7a7a;
+        }
+
+        .wa-lead-box .form-control {
+            margin-bottom: 14px;
+        }
+
+        .wa-lead-dismiss {
+            position: absolute;
+            top: 10px;
+            right: 14px;
+            background: none;
+            border: none;
+            font-size: 22px;
+            line-height: 1;
+            color: #999;
+            cursor: pointer;
+        }
+
+        .wa-lead-status {
+            font-size: 13px;
+            margin: -6px 0 14px;
+            min-height: 16px;
+        }
+
+        .wa-lead-status.wa-lead-status-error {
+            color: #b3261e;
+        }
+
+        .wa-lead-status.wa-lead-status-success {
+            color: #103c3b;
+        }
+
+        .wa-lead-submit {
+            width: 100%;
+            background: #25D366;
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            padding: 11px 20px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .wa-lead-submit:disabled {
+            opacity: .6;
+            cursor: not-allowed;
+        }
+
         .stat-card {
             background: #fff;
             border-radius: 16px;

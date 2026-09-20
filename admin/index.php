@@ -25,15 +25,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->execute(['id' => $id]);
         }
 
-        header('Location: index.php' . (isset($_GET['q']) ? '?q=' . urlencode($_GET['q']) : ''));
+        $qs = [];
+        if (isset($_GET['q'])) { $qs['q'] = $_GET['q']; }
+        if (isset($_GET['page'])) { $qs['page'] = $_GET['page']; }
+        header('Location: index.php' . ($qs ? '?' . http_build_query($qs) : ''));
         exit;
     }
 }
 
-$search = trim($_GET['q'] ?? '');
-$page   = max(1, (int) ($_GET['page'] ?? 1));
-$perPage = 20;
-$offset = ($page - 1) * $perPage;
+$search  = trim($_GET['q'] ?? '');
+$page    = max(1, (int) ($_GET['page'] ?? 1));
+$perPage = 10;
+$offset  = ($page - 1) * $perPage;
 
 $where  = '';
 $params = [];
@@ -46,6 +49,8 @@ $countStmt = $pdo->prepare("SELECT COUNT(*) FROM contact_submissions $where");
 $countStmt->execute($params);
 $total = (int) $countStmt->fetchColumn();
 $totalPages = max(1, (int) ceil($total / $perPage));
+$page = min($page, $totalPages);
+$offset = ($page - 1) * $perPage;
 
 $listStmt = $pdo->prepare("SELECT * FROM contact_submissions $where ORDER BY created_at DESC LIMIT :limit OFFSET :offset");
 foreach ($params as $k => $v) {
@@ -57,6 +62,15 @@ $listStmt->execute();
 $rows = $listStmt->fetchAll();
 
 $unreadCount = (int) $pdo->query('SELECT COUNT(*) FROM contact_submissions WHERE is_read = 0')->fetchColumn();
+
+function admin_page_url(int $p, string $search): string
+{
+    $qs = ['page' => $p];
+    if ($search !== '') {
+        $qs['q'] = $search;
+    }
+    return 'index.php?' . http_build_query($qs);
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -71,8 +85,11 @@ $unreadCount = (int) $pdo->query('SELECT COUNT(*) FROM contact_submissions WHERE
 
 <div class="admin-topbar">
     <div class="brand">Arpan Township — Admin</div>
-    <div>
-        <span style="margin-right:16px; font-size:13px;">Signed in as <?php echo htmlspecialchars($_SESSION['admin_username']); ?></span>
+    <button type="button" class="admin-hamburger" id="adminHamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+    </button>
+    <div class="admin-topbar-menu" id="adminTopbarMenu">
+        <span class="admin-topbar-user">Signed in as <?php echo htmlspecialchars($_SESSION['admin_username']); ?></span>
         <a href="logout.php">Logout</a>
     </div>
 </div>
@@ -104,6 +121,7 @@ $unreadCount = (int) $pdo->query('SELECT COUNT(*) FROM contact_submissions WHERE
                     <th>Name</th>
                     <th>Email</th>
                     <th>Phone</th>
+                    <th>Source</th>
                     <th>Message</th>
                     <th>Status</th>
                     <th>Actions</th>
@@ -111,23 +129,30 @@ $unreadCount = (int) $pdo->query('SELECT COUNT(*) FROM contact_submissions WHERE
             </thead>
             <tbody>
                 <?php if (!$rows): ?>
-                    <tr><td colspan="7" style="text-align:center; color:#999; padding:24px;">No queries found.</td></tr>
+                    <tr><td colspan="8" style="text-align:center; color:#999; padding:24px;">No queries found.</td></tr>
                 <?php endif; ?>
                 <?php foreach ($rows as $row): ?>
                     <tr class="<?php echo $row['is_read'] ? '' : 'unread'; ?>">
-                        <td><?php echo htmlspecialchars(date('d M Y, h:i A', strtotime($row['created_at']))); ?></td>
-                        <td><?php echo htmlspecialchars($row['name']); ?></td>
-                        <td><?php echo htmlspecialchars($row['email']); ?></td>
-                        <td><?php echo htmlspecialchars($row['phone']); ?></td>
-                        <td class="msg-cell"><?php echo nl2br(htmlspecialchars($row['message'])); ?></td>
-                        <td>
+                        <td data-label="Date"><?php echo htmlspecialchars(date('d M Y, h:i A', strtotime($row['created_at']))); ?></td>
+                        <td data-label="Name"><?php echo htmlspecialchars($row['name']); ?></td>
+                        <td data-label="Email"><?php echo $row['email'] !== null && $row['email'] !== '' ? htmlspecialchars($row['email']) : '—'; ?></td>
+                        <td data-label="Phone"><?php echo htmlspecialchars($row['phone']); ?></td>
+                        <td data-label="Source">
+                            <?php if ($row['source'] === 'whatsapp'): ?>
+                                <span class="badge source-whatsapp">WhatsApp</span>
+                            <?php else: ?>
+                                <span class="badge source-contact_form">Contact Form</span>
+                            <?php endif; ?>
+                        </td>
+                        <td data-label="Message" class="msg-cell"><?php echo $row['message'] !== null && $row['message'] !== '' ? nl2br(htmlspecialchars($row['message'])) : '—'; ?></td>
+                        <td data-label="Status">
                             <?php if ($row['is_read']): ?>
                                 <span class="badge read">Read</span>
                             <?php else: ?>
                                 <span class="badge unread">New</span>
                             <?php endif; ?>
                         </td>
-                        <td class="admin-actions">
+                        <td data-label="Actions" class="admin-actions">
                             <form method="post" action="index.php<?php echo $search !== '' ? '?q=' . urlencode($search) : ''; ?>">
                                 <?php echo csrf_field(); ?>
                                 <input type="hidden" name="id" value="<?php echo (int) $row['id']; ?>">
@@ -154,17 +179,30 @@ $unreadCount = (int) $pdo->query('SELECT COUNT(*) FROM contact_submissions WHERE
 
         <?php if ($totalPages > 1): ?>
         <div class="admin-pagination">
+            <a class="<?php echo $page <= 1 ? 'disabled' : ''; ?>" href="<?php echo admin_page_url(max(1, $page - 1), $search); ?>">&laquo; Prev</a>
             <?php for ($p = 1; $p <= $totalPages; $p++): ?>
                 <?php if ($p === $page): ?>
                     <span class="current"><?php echo $p; ?></span>
                 <?php else: ?>
-                    <a href="index.php?page=<?php echo $p; ?><?php echo $search !== '' ? '&q=' . urlencode($search) : ''; ?>"><?php echo $p; ?></a>
+                    <a href="<?php echo admin_page_url($p, $search); ?>"><?php echo $p; ?></a>
                 <?php endif; ?>
             <?php endfor; ?>
+            <a class="<?php echo $page >= $totalPages ? 'disabled' : ''; ?>" href="<?php echo admin_page_url(min($totalPages, $page + 1), $search); ?>">Next &raquo;</a>
         </div>
         <?php endif; ?>
     </div>
 </div>
+
+<script>
+    (function () {
+        var btn = document.getElementById('adminHamburger');
+        var menu = document.getElementById('adminTopbarMenu');
+        if (!btn || !menu) { return; }
+        btn.addEventListener('click', function () {
+            menu.classList.toggle('admin-menu-open');
+        });
+    })();
+</script>
 
 </body>
 </html>

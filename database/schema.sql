@@ -7,9 +7,10 @@ USE arpan_township;
 CREATE TABLE IF NOT EXISTS contact_submissions (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(150) NOT NULL,
-    email VARCHAR(190) NOT NULL,
+    email VARCHAR(190) NULL,
     phone VARCHAR(30) NOT NULL,
-    message TEXT NOT NULL,
+    source VARCHAR(20) NOT NULL DEFAULT 'contact_form',
+    message TEXT NULL,
     ip_address VARCHAR(45) DEFAULT NULL,
     is_read TINYINT(1) NOT NULL DEFAULT 0,
     created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,

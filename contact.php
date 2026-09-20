@@ -186,6 +186,7 @@ include __DIR__ . '/header.php';
         }
 
         .form-popup-box {
+            display: block !important;
             background: #fff;
             max-width: 420px;
             width: 100%;
@@ -206,12 +207,12 @@ include __DIR__ . '/header.php';
             margin: 0 auto 16px;
         }
 
-        .form-popup-box.success .form-popup-icon {
+        .form-popup-box.is-success .form-popup-icon {
             background: #103c3b;
             color: #fff;
         }
 
-        .form-popup-box.error .form-popup-icon {
+        .form-popup-box.is-error .form-popup-icon {
             background: #b3261e;
             color: #fff;
         }
@@ -233,7 +234,7 @@ include __DIR__ . '/header.php';
             cursor: pointer;
         }
 
-        .form-popup-box.error .form-popup-close {
+        .form-popup-box.is-error .form-popup-close {
             background: #b3261e;
         }
 
@@ -250,7 +251,7 @@ include __DIR__ . '/header.php';
         }
     </style>
     <div class="form-popup-overlay" id="formPopup">
-        <div class="form-popup-box <?php echo $formStatus === 'success' ? 'success' : 'error'; ?>">
+        <div class="form-popup-box <?php echo $formStatus === 'success' ? 'is-success' : 'is-error'; ?>">
             <button type="button" class="form-popup-dismiss" onclick="document.getElementById('formPopup').remove()">&times;</button>
             <div class="form-popup-icon">
                 <?php if ($formStatus === 'success'): ?>
