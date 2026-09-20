@@ -132,21 +132,48 @@
     .admin-alert.error { background: #fdecea; color: #b3261e; border: 1px solid #f5c2be; }
     .admin-alert.success { background: #e8f4ee; color: #103c3b; border: 1px solid #b9ddc8; }
 
+    .admin-table-wrap {
+        border: 1px solid #edf0ee;
+        border-radius: 12px;
+        overflow: hidden;
+    }
     table.admin-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
     table.admin-table th, table.admin-table td {
         text-align: left;
-        padding: 10px 12px;
-        border-bottom: 1px solid #eee;
-        vertical-align: top;
+        padding: 14px 14px;
+        border-bottom: 1px solid #f0f2f0;
+        vertical-align: middle;
     }
-    table.admin-table th { color: #7a7a7a; text-transform: uppercase; font-size: 11px; letter-spacing: .4px; }
-    table.admin-table tr.unread { background: #fbf6ec; font-weight: 600; }
+    table.admin-table thead th {
+        color: #103c3b;
+        text-transform: uppercase;
+        font-size: 10.5px;
+        letter-spacing: .6px;
+        font-weight: 700;
+        background: #f7f8f6;
+        border-bottom: 1px solid #e7eae7;
+    }
+    table.admin-table tbody tr { transition: background .15s ease; }
+    table.admin-table tbody tr:last-child td { border-bottom: none; }
+    table.admin-table tbody tr:hover { background: #f9faf8; }
+    table.admin-table tr.unread { background: #fdfaf2; box-shadow: inset 3px 0 0 #cda45e; }
+    table.admin-table tr.unread:hover { background: #fbf5e6; }
 
-    .badge { display: inline-block; padding: 3px 11px; border-radius: 20px; font-size: 11px; font-weight: 600; white-space: nowrap; }
-    .badge.unread { background: #cda45e; color: #103c3b; }
-    .badge.read { background: #eee; color: #777; }
-    .badge.source-whatsapp { background: #dcf5e6; color: #128c4a; }
-    .badge.source-contact_form { background: #e6edf4; color: #2c5c8a; }
+    .badge {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 10.5px;
+        font-weight: 700;
+        letter-spacing: .3px;
+        text-transform: uppercase;
+        white-space: nowrap;
+        border: 1px solid transparent;
+    }
+    .badge.unread { background: #cda45e; color: #fff; }
+    .badge.read { background: #f1f2f0; color: #8a938f; border-color: #e5e7e4; }
+    .badge.source-whatsapp { background: #e6f9ee; color: #0f9d58; border-color: #cdefdc; }
+    .badge.source-contact_form { background: #eaf1fb; color: #2c5c8a; border-color: #d6e5f5; }
 
     .admin-actions { display: flex; flex-wrap: wrap; gap: 8px; }
     .admin-actions form { display: inline-flex; }
