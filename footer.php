@@ -21,7 +21,7 @@
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6 mb-sm-30">
                     <div class="d-flex justify-content-center">
-                        <i class="fs-60 id-color icon_pin"></i>
+                        <i class="fs-32 id-color icon_pin"></i>
                         <div class="ms-3">
                             <h4 class="mb-0">Site office</h4>
                             <p> Arpann Township, Mini Bypass, <br>Near Ambala Road, Saharanpur-247001</p>
@@ -31,7 +31,7 @@
 
                 <div class="col-lg-4 col-md-6 mb-sm-30">
                     <div class="d-flex justify-content-center">
-                        <i class="fs-60 id-color icon_pin"></i>
+                        <i class="fs-32 id-color icon_pin"></i>
                         <div class="ms-3">
                             <h4 class="mb-0">Head Office</h4>
                             <p>A-601, Vision Business Park Knowledge <br>Park-3, Greater Noida-201306</p>
@@ -41,7 +41,7 @@
 
                 <div class="col-lg-4 col-md-6 mb-sm-30">
                     <div class="d-flex justify-content-center">
-                        <i class="fs-60 id-color icon_phone"></i>
+                        <i class="fs-32 id-color icon_phone"></i>
                         <div class="ms-3">
                             <h4 class="mb-0">Call Us</h4>
                             <p>+91 8607 636363 | +91 8607 112233</p>
