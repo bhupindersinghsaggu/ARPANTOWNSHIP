@@ -13,6 +13,7 @@ CREATE TABLE IF NOT EXISTS contact_submissions (
     message TEXT NULL,
     ip_address VARCHAR(45) DEFAULT NULL,
     is_read TINYINT(1) NOT NULL DEFAULT 0,
+    status VARCHAR(20) NOT NULL DEFAULT 'new',
     created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     INDEX idx_created_at (created_at)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

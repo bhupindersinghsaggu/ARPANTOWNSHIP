@@ -135,7 +135,7 @@
     .admin-actions button.danger { color: #b3261e; border-color: #f3c9c5; background: #fdecea; }
     .admin-actions button.danger:hover { background: #fbdedb; }
 
-    .admin-search { display: flex; gap: 8px; }
+    .admin-search { display: flex; gap: 8px; flex-wrap: wrap; }
     .admin-search input {
         padding: 9px 12px;
         border: 1px solid #d8d8d8;
@@ -144,6 +144,48 @@
         width: 260px;
         max-width: 100%;
     }
+    .admin-status-filter {
+        padding: 9px 12px;
+        border: 1px solid #d8d8d8;
+        border-radius: 6px;
+        font-size: 13.5px;
+        color: #333;
+        background: #fff;
+    }
+
+    .phone-link {
+        color: #103c3b;
+        text-decoration: none;
+        font-weight: 600;
+    }
+    .phone-link:hover { text-decoration: underline; }
+    .wa-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 22px;
+        height: 22px;
+        margin-left: 6px;
+        border-radius: 50%;
+        background: #25D366;
+        color: #fff;
+        vertical-align: middle;
+    }
+    .wa-link:hover { opacity: .85; }
+
+    .status-select {
+        padding: 6px 10px;
+        border-radius: 6px;
+        font-size: 12.5px;
+        font-weight: 600;
+        cursor: pointer;
+        border: 1px solid transparent;
+    }
+    .status-select.status-new { background: #eee; color: #666; }
+    .status-select.status-in_progress { background: #e6edf4; color: #2c5c8a; }
+    .status-select.status-follow_up { background: #fdf1de; color: #9a6b1a; }
+    .status-select.status-deal_close { background: #e0f5e8; color: #148a4b; }
+    .status-select.status-dead_query { background: #fdecea; color: #b3261e; }
 
     .admin-pagination { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
     .admin-pagination a, .admin-pagination span {
