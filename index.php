@@ -10,7 +10,7 @@
                         <div class="col-lg-12">
                             <div class="text-start">
                                 <h1 class="fs-150 text-uppercase fs-sm-10vw hero-title mb-0 lh-1 wow fadeInUp"
-                                    data-wow-delay=".2s">ARPAN TOWNSHIP</h1>
+                                    data-wow-delay=".2s">ARPANN TOWNSHIP</h1>
                             </div>
                             <div class="text-lg-end">
                                 <h1 class="fs-150 text-uppercase fs-sm-10vw hero-title mb-4 lh-1 wow fadeInUp"
