@@ -507,7 +507,7 @@
                             </div>
                             <div class="col-end">
                                 <div class="menu_side_area">
-                                    <a href="tel:+918607112233"
+                                    <a href="contact.php"
                                         class="btn-main btn-line bg-blur fx-slide sm-hide"><span>Schedule a
                                             Visit</span></a>
                                     <span id="menu-btn"></span>
