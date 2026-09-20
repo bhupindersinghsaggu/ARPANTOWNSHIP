@@ -55,7 +55,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        Copyright 2026
+                        Copyright 2026 &nbsp;&middot;&nbsp; <a href="admin/login.php" style="opacity:.7;">Admin Login</a>
                     </div>
                     <div class="col-md-6 text-md-end">
                         <div class="social-icons mb-sm-30 text-center">
