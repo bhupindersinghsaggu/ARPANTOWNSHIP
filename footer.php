@@ -104,8 +104,8 @@
         <div class="wa-lead-overlay" id="waLeadOverlay">
             <div class="wa-lead-box">
                 <button type="button" class="wa-lead-dismiss" id="waLeadClose">&times;</button>
-                <h4>Chat with us on WhatsApp</h4>
-                <p class="wa-lead-sub">Share your details and we'll open WhatsApp for you.</p>
+                <h4>Enquire About Arpan Township</h4>
+                <p class="wa-lead-sub">Share your details and our team will connect with you on WhatsApp.</p>
                 <form id="waLeadForm" autocomplete="off">
                     <input type="text" name="name" class="form-control" placeholder="Your Name" required>
                     <input type="tel" name="phone" class="form-control" placeholder="Your Phone Number" required>
