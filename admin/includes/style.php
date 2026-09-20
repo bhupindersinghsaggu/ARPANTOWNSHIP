@@ -3,8 +3,9 @@
     body {
         margin: 0;
         font-family: 'Segoe UI', Arial, sans-serif;
-        background: #f4f6f5;
+        background: #f2f4f1;
         color: #1c2a29;
+        -webkit-font-smoothing: antialiased;
     }
 
     #topProgressBar {
@@ -24,16 +25,20 @@
         transition: width 1.2s ease-out, opacity .2s ease;
     }
     .admin-topbar {
-        background: #103c3b;
+        background: linear-gradient(135deg, #103c3b 0%, #0c2e2d 100%);
         color: #fff;
-        padding: 14px 24px;
+        padding: 14px 28px;
         display: flex;
         align-items: center;
         justify-content: space-between;
         position: relative;
+        border-bottom: 2px solid #cda45e;
+        box-shadow: 0 2px 12px rgba(0,0,0,.15);
     }
-    .admin-topbar a { color: #f5d9a0; text-decoration: none; font-weight: 600; }
-    .admin-topbar .brand { font-weight: 700; letter-spacing: .5px; }
+    .admin-topbar a { color: #f5d9a0; text-decoration: none; font-weight: 600; transition: opacity .2s ease; }
+    .admin-topbar a:hover { opacity: .8; }
+    .admin-topbar .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: .4px; }
+    .admin-topbar .brand img { height: 26px; width: auto; display: block; }
     .admin-topbar-right { display: flex; align-items: center; gap: 16px; }
     .admin-topbar-user { font-size: 13px; }
     .admin-hamburger {
@@ -64,10 +69,11 @@
     .admin-wrap { max-width: 1400px; margin: 30px auto; padding: 0 20px; }
     .admin-card {
         background: #fff;
-        border-radius: 10px;
-        box-shadow: 0 2px 14px rgba(0,0,0,.06);
-        padding: 24px;
+        border-radius: 14px;
+        box-shadow: 0 1px 2px rgba(16,60,59,.04), 0 12px 32px rgba(16,60,59,.08);
+        padding: 26px 28px;
         margin-bottom: 24px;
+        border: 1px solid rgba(16,60,59,.06);
     }
     .admin-auth-page {
         min-height: 100vh;
