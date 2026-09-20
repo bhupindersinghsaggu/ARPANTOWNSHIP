@@ -234,7 +234,10 @@ function admin_page_url(int $p, string $search, string $statusFilter): string
                                 <?php echo csrf_field(); ?>
                                 <input type="hidden" name="id" value="<?php echo (int) $row['id']; ?>">
                                 <input type="hidden" name="action" value="delete">
-                                <button type="submit" class="danger">Delete</button>
+                                <button type="submit" class="danger">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0-1 14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2L4 6h16ZM10 11v6M14 11v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                    Delete
+                                </button>
                             </form>
                         </td>
                     </tr>

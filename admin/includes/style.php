@@ -145,6 +145,9 @@
     .admin-actions { display: flex; flex-wrap: wrap; gap: 8px; }
     .admin-actions form { display: inline-flex; }
     .admin-actions button {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
         background: #eef2f1;
         border: 1px solid #dbe2e0;
         color: #103c3b;
@@ -155,6 +158,7 @@
         border-radius: 20px;
         white-space: nowrap;
     }
+    .admin-actions button svg { flex-shrink: 0; }
     .admin-actions button:hover { background: #e2e9e7; }
     .admin-actions button.danger { color: #b3261e; border-color: #f3c9c5; background: #fdecea; }
     .admin-actions button.danger:hover { background: #fbdedb; }
