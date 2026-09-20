@@ -81,6 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 <div class="admin-auth-page">
     <div class="admin-auth-box">
+        <img src="../images/logo.png" alt="Arpan Township" class="admin-auth-logo">
         <h1>Arpan Township</h1>
         <p class="sub">Admin login</p>
 

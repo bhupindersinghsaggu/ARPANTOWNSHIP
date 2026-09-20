@@ -44,7 +44,7 @@
         gap: 16px;
     }
 
-    .admin-wrap { max-width: 1100px; margin: 30px auto; padding: 0 20px; }
+    .admin-wrap { max-width: 1400px; margin: 30px auto; padding: 0 20px; }
     .admin-card {
         background: #fff;
         border-radius: 10px;
@@ -68,12 +68,19 @@
         max-width: 380px;
         box-shadow: 0 20px 60px rgba(0,0,0,.3);
     }
+    .admin-auth-logo {
+        display: block;
+        height: 56px;
+        width: auto;
+        margin: 0 auto 18px;
+    }
     .admin-auth-box h1 {
         font-size: 20px;
         margin: 0 0 4px;
+        text-align: center;
         color: #103c3b;
     }
-    .admin-auth-box p.sub { color: #7a7a7a; font-size: 13px; margin: 0 0 22px; }
+    .admin-auth-box p.sub { color: #7a7a7a; font-size: 13px; margin: 0 0 22px; text-align: center; }
     .admin-field { margin-bottom: 16px; }
     .admin-field label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: #333; }
     .admin-field input {

@@ -49,6 +49,7 @@ if ($adminCount > 0) {
 <body>
 <div class="admin-auth-page">
     <div class="admin-auth-box">
+        <img src="../images/logo.png" alt="Arpan Township" class="admin-auth-logo">
         <h1>Create Admin Account</h1>
         <p class="sub">One-time setup for the Arpan Township admin panel.</p>
 

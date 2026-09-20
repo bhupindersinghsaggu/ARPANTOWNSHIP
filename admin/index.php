@@ -204,13 +204,14 @@ function admin_page_url(int $p, string $search, string $statusFilter): string
                             <?php endif; ?>
                         </td>
                         <td data-label="Lead Status">
+                            <?php $rowStatus = $row['status'] ?? 'new'; if (!array_key_exists($rowStatus, LEAD_STATUSES)) { $rowStatus = 'new'; } ?>
                             <form method="post" action="index.php?<?php echo http_build_query(array_filter(['q' => $search, 'status' => $statusFilter, 'page' => $page])); ?>">
                                 <?php echo csrf_field(); ?>
                                 <input type="hidden" name="id" value="<?php echo (int) $row['id']; ?>">
                                 <input type="hidden" name="action" value="set_status">
-                                <select name="status" class="status-select status-<?php echo htmlspecialchars($row['status']); ?>" onchange="this.className='status-select status-' + this.value; this.form.submit()">
+                                <select name="status" class="status-select status-<?php echo htmlspecialchars($rowStatus); ?>" onchange="this.className='status-select status-' + this.value; this.form.submit()">
                                     <?php foreach (LEAD_STATUSES as $key => $label): ?>
-                                        <option value="<?php echo htmlspecialchars($key); ?>" <?php echo $row['status'] === $key ? 'selected' : ''; ?>><?php echo htmlspecialchars($label); ?></option>
+                                        <option value="<?php echo htmlspecialchars($key); ?>" <?php echo $rowStatus === $key ? 'selected' : ''; ?>><?php echo htmlspecialchars($label); ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </form>
