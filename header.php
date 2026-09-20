@@ -1,4 +1,4 @@
-<?php if (!isset($pageTitle)) { $pageTitle = 'ARPAN TOWNSHIP- Saharanpur Uttar Pradesh'; } ?>
+<?php if (!isset($pageTitle)) { $pageTitle = 'ARPANN TOWNSHIP- Saharanpur Uttar Pradesh'; } ?>
 <!DOCTYPE html>
 <html lang="en">
 
