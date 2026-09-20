@@ -6,6 +6,23 @@
         background: #f4f6f5;
         color: #1c2a29;
     }
+
+    #topProgressBar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        width: 0%;
+        background: #cda45e;
+        z-index: 99999;
+        transition: width 1.2s ease-out, opacity .3s ease .2s;
+        opacity: 0;
+    }
+    #topProgressBar.progress-active {
+        width: 90%;
+        opacity: 1;
+        transition: width 1.2s ease-out, opacity .2s ease;
+    }
     .admin-topbar {
         background: #103c3b;
         color: #fff;

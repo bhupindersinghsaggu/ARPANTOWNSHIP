@@ -121,6 +121,8 @@ function admin_page_url(int $p, string $search, string $statusFilter): string
 </head>
 <body>
 
+<div id="topProgressBar"></div>
+
 <div class="admin-topbar">
     <div class="brand">Arpan Township — Admin</div>
     <button type="button" class="admin-hamburger" id="adminHamburger" aria-label="Menu">
@@ -228,7 +230,7 @@ function admin_page_url(int $p, string $search, string $statusFilter): string
                                     <button type="submit">Mark read</button>
                                 <?php endif; ?>
                             </form>
-                            <form method="post" action="index.php<?php echo $search !== '' ? '?q=' . urlencode($search) : ''; ?>" onsubmit="return confirm('Delete this query permanently?');">
+                            <form method="post" action="index.php<?php echo $search !== '' ? '?q=' . urlencode($search) : ''; ?>" onsubmit="return handleDeleteSubmit(this);">
                                 <?php echo csrf_field(); ?>
                                 <input type="hidden" name="id" value="<?php echo (int) $row['id']; ?>">
                                 <input type="hidden" name="action" value="delete">
@@ -266,6 +268,22 @@ function admin_page_url(int $p, string $search, string $statusFilter): string
             menu.classList.toggle('admin-menu-open');
         });
     })();
+
+    function handleDeleteSubmit(form) {
+        if (!confirm('Delete this query permanently?')) {
+            return false;
+        }
+        var bar = document.getElementById('topProgressBar');
+        if (bar) {
+            bar.classList.add('progress-active');
+        }
+        var btn = form.querySelector('button[type="submit"]');
+        if (btn) {
+            btn.disabled = true;
+            btn.textContent = 'Deleting...';
+        }
+        return true;
+    }
 </script>
 
 </body>
