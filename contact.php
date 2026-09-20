@@ -27,6 +27,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['contact_submit'])) {
         $formStatus  = 'error';
         $formMessage = 'Please enter a valid email address.';
     } else {
+        try {
+            require __DIR__ . '/includes/db.php';
+            $insert = $pdo->prepare(
+                'INSERT INTO contact_submissions (name, email, phone, message, ip_address, created_at) VALUES (:name, :email, :phone, :message, :ip, NOW())'
+            );
+            $insert->execute([
+                'name'    => $old['name'],
+                'email'   => $old['email'],
+                'phone'   => $old['phone'],
+                'message' => $old['message'],
+                'ip'      => $_SERVER['REMOTE_ADDR'] ?? null,
+            ]);
+        } catch (Throwable $e) {
+            error_log('Failed to store contact submission: ' . $e->getMessage());
+        }
+
         $config = file_exists(__DIR__ . '/mail-config.php') ? require __DIR__ . '/mail-config.php' : null;
 
         if (!$config || empty($config['smtp_username']) || $config['smtp_username'] === 'your-gmail-address@gmail.com') {

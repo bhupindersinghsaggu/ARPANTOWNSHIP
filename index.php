@@ -73,7 +73,7 @@ Near Ambala Road, Saharanpur-247001</span>
                                     together premium living, vibrant commercial spaces, leisure and seamless
                                     connectivity—creating an environment envisioned for the future.</p>
 
-                                <a class="btn-main fx-slide" href="tel:+918607112233"><span>Schedule
+                                <a class="btn-main fx-slide" href="contact.php"><span>Schedule
                                         Visit</span></a>
                             </div>
                         </div>
