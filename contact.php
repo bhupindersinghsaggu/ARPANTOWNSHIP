@@ -114,21 +114,21 @@ include __DIR__ . '/header.php';
                 <div class="row g-4 justify-content-center">
                     <div class="col-lg-4">
                         <div class="d-flex mb-4">
-                            <i class="fs-60 id-color icon_pin"></i>
+                            <i class="fs-32 id-color icon_pin"></i>
                             <div class="ms-3">
                                 <h4 class="mb-0">Site Office</h4>
                                 <p>Arpann Township, Mini Bypass,<br>Near Ambala Road, Saharanpur-247001</p>
                             </div>
                         </div>
                         <div class="d-flex mb-4">
-                            <i class="fs-60 id-color icon_phone"></i>
+                            <i class="fs-32 id-color icon_phone"></i>
                             <div class="ms-3">
                                 <h4 class="mb-0">Call Us</h4>
                                 <p>+91 8607 636363 | +91 8607 112233</p>
                             </div>
                         </div>
                         <div class="d-flex mb-4">
-                            <i class="fs-60 id-color icon_mail"></i>
+                            <i class="fs-32 id-color icon_mail"></i>
                             <div class="ms-3">
                                 <h4 class="mb-0">Email Us</h4>
                                 <p>arpanntownship@gmail.com</p>
