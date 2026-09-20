@@ -180,7 +180,7 @@ function admin_page_url(int $p, string $search, string $statusFilter): string
                 <?php endif; ?>
                 <?php foreach ($rows as $row): ?>
                     <tr class="<?php echo $row['is_read'] ? '' : 'unread'; ?>">
-                        <td data-label="Date"><?php echo htmlspecialchars(date('d M Y, h:i A', strtotime($row['created_at']))); ?></td>
+                        <td data-label="Date"><?php echo htmlspecialchars(date('M- d, Y', strtotime($row['created_at']))); ?></td>
                         <td data-label="Name"><?php echo htmlspecialchars($row['name']); ?></td>
                         <td data-label="Email"><?php echo $row['email'] !== null && $row['email'] !== '' ? htmlspecialchars($row['email']) : '—'; ?></td>
                         <td data-label="Phone">
